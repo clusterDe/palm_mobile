@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/constant.dart';
 
-var theme = ThemeData(
+var themeData = ThemeData(
   useMaterial3: true,
   popupMenuTheme: PopupMenuThemeData(
     surfaceTintColor: Colors.white,
