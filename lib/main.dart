@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:palm_mobile/themes/theme.dart';
+
+import 'routes/routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -9,11 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Palm Mobile',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: themeData,
+      routerDelegate: route.routerDelegate,
+      routeInformationParser: route.routeInformationParser,
+      routeInformationProvider: route.routeInformationProvider,
     );
   }
 }
