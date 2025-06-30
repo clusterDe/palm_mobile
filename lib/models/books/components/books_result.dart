@@ -88,29 +88,29 @@ class BooksResult {
       title: map['title'] != null ? map['title'] as String : null,
       authors: map['authors'] != null
           ? List<Author>.from(
-              (map['authors'] as List<int>).map<Author?>(
+              (map['authors'] as List<dynamic>).map<Author?>(
                 (x) => Author.fromMap(x as Map<String, dynamic>),
               ),
             )
           : null,
       summaries: map['summaries'] != null
-          ? List<String>.from((map['summaries'] as List<String>))
+          ? List<String>.from((map['summaries'] as List<dynamic>))
           : null,
       translators: map['translators'] != null
           ? List<Author>.from(
-              (map['translators'] as List<int>).map<Author?>(
+              (map['translators'] as List<dynamic>).map<Author?>(
                 (x) => Author.fromMap(x as Map<String, dynamic>),
               ),
             )
           : null,
       subjects: map['subjects'] != null
-          ? List<String>.from((map['subjects'] as List<String>))
+          ? List<String>.from((map['subjects'] as List<dynamic>))
           : null,
       bookshelves: map['bookshelves'] != null
-          ? List<String>.from((map['bookshelves'] as List<String>))
+          ? List<String>.from((map['bookshelves'] as List<dynamic>))
           : null,
       languages: map['languages'] != null
-          ? List<String>.from((map['languages'] as List<String>))
+          ? List<String>.from((map['languages'] as List<dynamic>))
           : null,
       copyright: map['copyright'] != null ? map['copyright'] as bool : null,
       mediaType: map['media_type'] != null ? map['media_type'] as String : null,
