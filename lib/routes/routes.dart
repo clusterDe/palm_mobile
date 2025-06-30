@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:palm_mobile/providers/home/home_provider.dart';
 import 'package:palm_mobile/screens/dashboard/dashboard_screen.dart';
 import 'package:palm_mobile/screens/home/home_screen.dart';
 import 'package:palm_mobile/screens/likes/likes_screen.dart';
+import 'package:provider/provider.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -22,7 +24,10 @@ GoRouter route = GoRouter(
             GoRoute(
               path: HomeScreen.routeName,
               name: HomeScreen.routeName,
-              builder: (context, state) => HomeScreen(),
+              builder: (context, state) => ChangeNotifierProvider.value(
+                value: HomeProvider(),
+                child: HomeScreen(),
+              ),
             ),
           ],
         ),
