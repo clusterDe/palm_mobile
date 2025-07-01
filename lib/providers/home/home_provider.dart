@@ -23,7 +23,7 @@ class HomeProvider extends ChangeNotifier with BooksProvider {
 
   void _scrollListener() async {
     if (scrollCtrlBooks.position.pixels >=
-            scrollCtrlBooks.position.maxScrollExtent - 200 &&
+            scrollCtrlBooks.position.maxScrollExtent &&
         !isLoading &&
         hasMore) {
       await _fetchBooks();
