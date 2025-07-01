@@ -14,15 +14,6 @@ var themeData = ThemeData(
     seedColor: Colors.deepPurple,
     brightness: Brightness.light,
   ),
-  appBarTheme: AppBarTheme(
-    iconTheme: const IconThemeData(color: Colors.white),
-    actionsIconTheme: const IconThemeData(color: Colors.white),
-    titleTextStyle: const TextStyle(
-      color: Colors.white,
-      fontSize: 16,
-      fontWeight: FontWeight.w700,
-    ),
-  ),
   inputDecorationTheme: InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: defPadding),
     labelStyle: const TextStyle(fontSize: 12),
