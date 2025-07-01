@@ -122,9 +122,6 @@ class UrlLauncherHelper {
 
     var uriText = Uri.encodeQueryComponent('$text');
 
-    print(
-      "check url https://telegram.me/share/url?url=$phoneNumber&text=$uriText",
-    );
     var launchCall = Uri.parse(
       'https://telegram.me/share/url?url=$phoneNumber&text=$uriText',
     );
