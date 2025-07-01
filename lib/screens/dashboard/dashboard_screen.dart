@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:palm_mobile/routes/routes.dart';
+import 'package:palm_mobile/screens/home/home_screen.dart';
+import 'package:palm_mobile/screens/likes/likes_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key, required this.navigationShell});
 
-  final StatefulNavigationShell navigationShell;
+  final Widget navigationShell;
 
   void _onTap(int index) {
-    navigationShell.goBranch(
-      index,
-      initialLocation: index == navigationShell.currentIndex,
-    );
+    var context = navigatorKey.currentState!.context;
+    switch (index) {
+      case 0:
+        context.replaceNamed(HomeScreen.routeName);
+        break;
+      case 1:
+        context.replaceNamed(LikesScreen.routeName);
+        break;
+      default:
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell,
+      body: Builder(
+        builder: (context) {
+          return navigationShell;
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: navigationShell.currentIndex,
         onTap: _onTap,
         items: [
           BottomNavigationBarItem(
