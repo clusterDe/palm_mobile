@@ -44,4 +44,23 @@ class ApiHelper {
       throw '$reasonPhrase';
     }
   }
+
+  static apiBooksSearch({required String searchText, String? page}) async {
+    var url = Uri.parse('$_baseUrl/books/?page=$page&search=$searchText');
+
+    var headerPost = apiHeader();
+
+    var response = await http.get(url, headers: headerPost);
+    var statusCode = response.statusCode;
+    var reasonPhrase = response.reasonPhrase;
+
+    var body = response.body;
+    var decode = json.decode(body);
+
+    if (apiResponse(statusCode)) {
+      return decode;
+    } else {
+      throw '$reasonPhrase';
+    }
+  }
 }
