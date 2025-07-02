@@ -46,11 +46,18 @@ class SearchProvider extends ChangeNotifier with BooksSearchProvider {
     notifyListeners();
   }
 
+  refresh() {
+    isLoading = true;
+    isRefreshingFirstTime = true;
+    itemsBooksSearch.clear();
+    _currentPage = 1;
+    notifyListeners();
+
+    fetchSearch();
+  }
+
   fetchSearch() async {
     searchFocusNode.unfocus();
-
-    isLoading = true;
-    notifyListeners();
 
     await getBooksSearch(text: searchCtrl.text, page: '$_currentPage');
 
@@ -65,6 +72,9 @@ class SearchProvider extends ChangeNotifier with BooksSearchProvider {
 
       if (booksSearchData?.next != null) {
         _currentPage++;
+        notifyListeners();
+      } else {
+        hasMore = false;
         notifyListeners();
       }
 
