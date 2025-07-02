@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:palm_mobile/providers/home/home_provider.dart';
 import 'package:palm_mobile/themes/theme.dart';
+import 'package:provider/provider.dart';
 
 import 'routes/routes.dart';
 
@@ -14,13 +16,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Palm Mobile',
-      debugShowCheckedModeBanner: false,
-      theme: themeData,
-      routerDelegate: route.routerDelegate,
-      routeInformationParser: route.routeInformationParser,
-      routeInformationProvider: route.routeInformationProvider,
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => HomeProvider())],
+      child: MaterialApp.router(
+        title: 'Palm Mobile',
+        debugShowCheckedModeBanner: false,
+        theme: themeData,
+        routerDelegate: route.routerDelegate,
+        routeInformationParser: route.routeInformationParser,
+        routeInformationProvider: route.routeInformationProvider,
+      ),
     );
   }
 }
