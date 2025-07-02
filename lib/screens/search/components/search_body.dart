@@ -21,14 +21,10 @@ class SearchBody extends StatelessWidget {
         }
 
         if (itemsBooksSearch.isEmpty) {
-          return ListView(
-            physics: AlwaysScrollableScrollPhysics(),
-            children: [Center(child: Text('Empty'))],
-          );
+          return Center(child: Center(child: Text('Empty')));
         } else {
           return CustomScrollView(
             controller: searchProv.scrollCtrlBooks,
-            physics: AlwaysScrollableScrollPhysics(),
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             slivers: [
               SliverList.separated(
