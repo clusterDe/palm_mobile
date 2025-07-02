@@ -30,13 +30,25 @@ class ImageSection extends StatelessWidget {
                 child: Consumer<BooksDetailProvider>(
                   builder: (context, bookDetailProv, _) {
                     var likes = bookDetailProv.likes;
+                    var isLoading = bookDetailProv.isLoading;
+
                     return IconButton.filledTonal(
                       onPressed: () {
                         bookDetailProv.likeBook(booksDetailData!);
                       },
-                      icon: Icon(
-                        likes ? Icons.favorite : Icons.favorite_border,
-                        color: likes ? Colors.redAccent : null,
+                      icon: Builder(
+                        builder: (context) {
+                          if (isLoading) {
+                            return Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            );
+                          } else {
+                            return Icon(
+                              likes ? Icons.favorite : Icons.favorite_border,
+                              color: likes ? Colors.redAccent : null,
+                            );
+                          }
+                        },
                       ),
                     );
                   },

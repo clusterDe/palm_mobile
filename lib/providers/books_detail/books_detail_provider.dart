@@ -25,22 +25,32 @@ class BooksDetailProvider extends ChangeNotifier
 
   List<BooksResult> listLikeBooks = [];
 
+  bool isLoading = false;
+
+  changeValLoading() {
+    isLoading = !isLoading;
+    notifyListeners();
+  }
+
   bool likes = false;
 
   readBookDb() async {
+    List<BooksResult> temp = [];
+
+    changeValLoading();
+
     var list = await checkLikeBook();
 
     if (list != null && list.isNotEmpty) {
-      List<BooksResult> temp = [];
-
       for (var element in list) {
         var booksResult = BooksResult.fromJson(element);
 
         temp.add(booksResult);
       }
-
-      listLikeBooks = temp;
     }
+
+    listLikeBooks = temp;
+    notifyListeners();
 
     var contains = listLikeBooks.contains(booksDetailData);
 
@@ -51,6 +61,8 @@ class BooksDetailProvider extends ChangeNotifier
       likes = false;
       notifyListeners();
     }
+
+    changeValLoading();
   }
 
   likeBook(BooksResult book) async {
