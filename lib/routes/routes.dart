@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:palm_mobile/providers/books_detail/books_detail_provider.dart';
-import 'package:palm_mobile/providers/home/home_provider.dart';
 import 'package:palm_mobile/providers/likes/likes_provider.dart';
 import 'package:palm_mobile/screens/books_detail/books_detail_screen.dart';
 import 'package:palm_mobile/screens/dashboard/dashboard_screen.dart';
@@ -27,10 +26,7 @@ GoRouter route = GoRouter(
         GoRoute(
           path: HomeScreen.routeName,
           name: HomeScreen.routeName,
-          builder: (context, state) => ChangeNotifierProvider.value(
-            value: HomeProvider(),
-            child: HomeScreen(key: state.pageKey),
-          ),
+          builder: (context, state) => HomeScreen(key: state.pageKey),
         ),
         GoRoute(
           path: LikesScreen.routeName,
