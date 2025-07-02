@@ -6,6 +6,7 @@ import 'package:palm_mobile/screens/books_detail/books_detail_screen.dart';
 import 'package:palm_mobile/screens/dashboard/dashboard_screen.dart';
 import 'package:palm_mobile/screens/home/home_screen.dart';
 import 'package:palm_mobile/screens/likes/likes_screen.dart';
+import 'package:palm_mobile/screens/search/search_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../models/books/components/books_result.dart';
@@ -46,6 +47,13 @@ GoRouter route = GoRouter(
           value: BooksDetailProvider(booksData: state.extra as BooksResult),
           child: BooksDetailScreen(),
         );
+      },
+    ),
+    GoRoute(
+      path: SearchScreen.routeName,
+      name: SearchScreen.routeName,
+      builder: (context, state) {
+        return SearchScreen();
       },
     ),
   ],
