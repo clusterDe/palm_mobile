@@ -19,7 +19,7 @@ class SearchScreen extends StatelessWidget {
                 searchProv.updateText(value);
               },
               onEditingComplete: () {
-                searchProv.fetchSearch();
+                searchProv.refresh();
               },
               textInputAction: TextInputAction.search,
               focusNode: searchProv.searchFocusNode,
